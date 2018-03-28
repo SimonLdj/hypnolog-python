@@ -26,6 +26,9 @@ class HypnoLog:
         r = requests.post(serverURL, headers={'Content-Type': 'application/json'}, data=postData);
         if r.status_code == 200:
             return True;
+
+        # define better way of handling error
+        print("HypnoLog error: server response code is", r.status_code);
         return False;
 
 def log(obj, objType='object'):
