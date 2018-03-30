@@ -1,4 +1,3 @@
-
 import requests
 import jsonpickle
 
@@ -6,15 +5,25 @@ import jsonpickle
 # TODO: note, libraries should be local dependencies
 # TODO: docuemnt, accroding to pyhton style
 
-class HypnoLog:
-    def __init__(self):
-        pass
+_errorHandler = None;
+_host = 'localhost';
+_port = 7000;
 
-    # Simple HypnoLog logging funciton
-    def log(obj, objType='object'):
+# Init
+def initialize(host=None, port=None, errorHandler=None):
+    global _host, _port, _errorHandler;
+    if host != None:
+        _host = host;
+    if port != None:
+        _port = port;
+    if errorHandler != None:
+        _errorHandler = errorHandler;
 
+# Simple HypnoLog logging funciton
+def log(obj, objType='object'):
+    try:
         # some const settings
-        serverURL = 'http://localhost:7000/logger/in';
+        serverURL = 'http://{host}:{port}/logger/in'.format(host=_host, port=_port);
 
         # prase the log request in a valid HypnoLog-data object
         hypnologObj = { "data": obj, "type": objType };
@@ -27,9 +36,19 @@ class HypnoLog:
         if r.status_code == 200:
             return True;
 
-        # define better way of handling error
-        print("HypnoLog error: server response code is", r.status_code);
+        # bad status code, raise exception
+        raise Exception("Server response code is not 200. status code: {0}".format(r.status_code));
+
+    except Exception as e:
+        _onError(e);
         return False;
 
-def log(obj, objType='object'):
-    HypnoLog.log(obj, objType);
+    return False;
+
+def _onError(e):
+    if _errorHandler != None:
+        _errorHandler(e);
+    else:
+        print("HypnoLog error:\n{0}".format(e));
+        # raise e;
+
