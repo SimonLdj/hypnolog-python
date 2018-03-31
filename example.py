@@ -1,3 +1,4 @@
+# import Hypnolog as HL
 import hypnolog as HL
 
 # Hypnolog-python usage examples:
