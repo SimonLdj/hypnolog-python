@@ -20,8 +20,11 @@ def initialize(host=None, port=None, errorHandler=None):
         _errorHandler = errorHandler;
 
 # Simple HypnoLog logging funciton
-def log(obj, objType='object'):
+def log(obj, objType=None):
     try:
+        if objType == None:
+            objType = _determineType(obj);
+
         # some const settings
         serverURL = 'http://{host}:{port}/logger/in'.format(host=_host, port=_port);
 
@@ -51,4 +54,9 @@ def _onError(e):
     else:
         print("HypnoLog error:\n{0}".format(e));
         # raise e;
+
+def _determineType(obj):
+    if isinstance(obj, str):
+        return 'string';
+    return 'object';
 
