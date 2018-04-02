@@ -29,7 +29,7 @@ HL.log('Hello HypnoLog from Pyhton!');
 HL.log([1,2,3], 'plot');
 ```
 
-For more examples, see [Basic Example](/examples.py) and [Advanced Example](advancedExample.py) code files.
+For more examples, see [Basic Example](/examples.py) and [Advanced Example](advancedExamples.py) code files.
 
 Read how to view the log and more about *HypnoLog* in [HypnoLog main repo page](https://github.com/SimonLdj/hypnolog-server).
 
