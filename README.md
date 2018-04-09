@@ -11,23 +11,40 @@ HypnoLog Python Library
 What it looks like, visualizing your data in the browser:
 ![alt text](/doc/images/screenshot_hypnolog-python-example.png "HypnoLog UI screenshot")
 
-## About HypnoLog Python Library
+## About HypnoLog-Python Library
 Logging using *HypnoLog* means sending you data as JSON HTTP request to HypnoLog server. This library wraps all of those into simple easy to use functions.
-<!--TODO: To use *HypnoLog* in your Python script ... -->
 
-## Usage Examples
-Really simple. Import HypnoLog:
-```python
-import hypnolog as HL
-```
-Log:
-```python
-// Log a string
-HL.log('Hello HypnoLog from Pyhton!');
+## Installation
+<!--TODO: write how to use python library-->
 
-// log list of numbers as a graph (plot)
-HL.log([1,2,3], 'plot');
+```bash
+pip install hypnolog-pytohn
 ```
+
+If you haven't use *HypnoLog* before, [setup HypnoLog server](https://github.com/SimonLdj/hypnolog-server#setup-hypnolog-server) on your machine:
+```bash
+npm install -g hypnolog-server
+```
+*Note:* you will need [Node.js](https://nodejs.org/en/) installed on your machine first.
+
+## Usage
+1. Start *HypnoLog* server:
+    ```bash
+    hypnolog-server
+    ```
+2. View output: open [`http://127.0.0.1:7000/client.html`](http://127.0.0.1:7000/client.html) in your browser.
+3. Import HypnoLog into your script:
+   ```python
+   import hypnolog as HL
+   ```
+4. Log:
+   ```python
+   // Log a string
+   HL.log('Hello HypnoLog from Pyhton!');
+
+   // log list of numbers as a graph (plot)
+   HL.log([1,2,3], 'plot');
+   ```
 
 For more examples, see [Basic Example](/examples.py) and [Advanced Example](advancedExamples.py) code files.
 
