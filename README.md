@@ -15,10 +15,9 @@ What it looks like, visualizing your data in the browser:
 Logging using *HypnoLog* means sending you data as JSON HTTP request to HypnoLog server. This library wraps all of those into simple easy to use functions.
 
 ## Installation
-<!--TODO: write how to use python library-->
-
+The easiest way to get *HypnoLog* is via [PyPi](https://pypi.org/) with `pip` command
 ```bash
-pip install hypnolog-pytohn
+pip install hypnolog
 ```
 
 If you haven't use *HypnoLog* before, [setup HypnoLog server](https://github.com/SimonLdj/hypnolog-server#setup-hypnolog-server) on your machine:
@@ -46,7 +45,7 @@ npm install -g hypnolog-server
    HL.log([1,2,3], 'plot');
    ```
 
-For more examples, see [Basic Example](/examples.py) and [Advanced Example](advancedExamples.py) code files.
+For more examples, see [Basic Example](hypnolog-python/examples.py) and [Advanced Example](hypnolog-pythona/dvancedExamples.py) code files.
 
 Read how to view the log and more about *HypnoLog* in [HypnoLog main repo page](https://github.com/SimonLdj/hypnolog-server).
 

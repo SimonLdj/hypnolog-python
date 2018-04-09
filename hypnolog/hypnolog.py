@@ -1,10 +1,6 @@
 import requests
 import jsonpickle
 
-# TODO: make this as library
-# TODO: note, libraries should be local dependencies
-# TODO: docuemnt, accroding to pyhton style
-
 _errorHandler = None;
 _host = 'localhost';
 _port = 7000;
