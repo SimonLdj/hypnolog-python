@@ -4,6 +4,7 @@ import jsonpickle
 _errorHandler = None;
 _host = 'localhost';
 _port = 7000;
+_session_tags = []
 
 def initialize(host=None, port=None, errorHandler=None):
     '''
@@ -23,7 +24,7 @@ def initialize(host=None, port=None, errorHandler=None):
     if errorHandler != None:
         _errorHandler = errorHandler;
 
-def log(obj, objType=None, tags=None):
+def log(obj, objType=None, tags=[]):
     '''
     Log given object using HypnoLog.
 
@@ -34,6 +35,8 @@ def log(obj, objType=None, tags=None):
     try:
         if objType == None:
             objType = _determineType(obj);
+
+        tags = _add_tags_to_list(_session_tags, *tags)
 
         # some const settings
         serverURL = 'http://{host}:{port}/logger/in'.format(host=_host, port=_port);
@@ -57,6 +60,17 @@ def log(obj, objType=None, tags=None):
         return False;
 
     return False;
+
+def setSessionTags(*tags):
+    global _session_tags
+    only_string_tags = [tag for tag in tags if isinstance(tag, basestring)]
+    _session_tags = _session_tags + only_string_tags
+
+def _add_tags_to_list(list, *tags):
+    if list == None:
+        list = []
+    only_string_tags = [tag for tag in tags if isinstance(tag, basestring)]
+    return list + only_string_tags
 
 def _onError(e):
     if _errorHandler != None:

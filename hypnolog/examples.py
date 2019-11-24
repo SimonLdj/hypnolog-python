@@ -66,3 +66,11 @@ HL.log('Example of logging custom object with nested custom objects:');
 # note, default logging type is 'object'
 HL.log(car);
 
+# log with tags
+HL.log("With one in-line tags", tags=["groupA"]);
+
+# Set tags which will persist for the whole session
+HL.setSessiondTags("")
+HL.log("Both in-line and fixed tags", tags=["groupB"]);
+HL.log("No in-line, but with fixed one")
+
