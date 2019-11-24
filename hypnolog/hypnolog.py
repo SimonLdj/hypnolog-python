@@ -23,7 +23,7 @@ def initialize(host=None, port=None, errorHandler=None):
     if errorHandler != None:
         _errorHandler = errorHandler;
 
-def log(obj, objType=None):
+def log(obj, objType=None, tags=None):
     '''
     Log given object using HypnoLog.
 
@@ -39,7 +39,7 @@ def log(obj, objType=None):
         serverURL = 'http://{host}:{port}/logger/in'.format(host=_host, port=_port);
 
         # prase the log request in a valid HypnoLog-data object
-        hypnologObj = { "data": obj, "type": objType };
+        hypnologObj = { "data": obj, "type": objType, "tags": tags};
 
         # encode the whole object to JSON
         postData = jsonpickle.encode(hypnologObj)
